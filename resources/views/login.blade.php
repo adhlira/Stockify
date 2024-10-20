@@ -12,20 +12,30 @@
 </head>
 
 <body class="bg-gray-800">
-    <div class="container border mx-auto w-80 min-h-full bg-gray-700 p-5 mt-28">
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: 'Success!',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
+    <div class="container border mx-auto w-80 min-h-full bg-gray-700 p-5 mt-28 rounded-lg">
         <h1 class="text-3xl text-white mb-10">Log In</h1>
         <form action="" method="POST">
             @csrf
 
-            <input type="text" class="border border-red-500 rounded-full bg-gray-800 text-white w-full mb-3 p-2"
+            <input type="text" name="username" class="border border-red-500 rounded-full bg-gray-800 text-white w-full mb-3 p-2"
                 placeholder=" Username">
-            <input type="password" class="border border-red-500 rounded-full bg-gray-800 text-white w-full mb-10 p-2"
+            <input type="password" name="password" class="border border-red-500 rounded-full bg-gray-800 text-white w-full mb-10 p-2"
                 placeholder=" Password">
             <button type="submit" class="border p-2 w-full rounded-full text-white bg-red-500">Log In</button>
         </form>
         <div class="flex mt-16 justify-center">
             <p class="text-white text-sm">Don't have an account ?</p>
-            <a href="" class="text-red-500 ml-8 text-sm hover:underline">Sign Up</a>
+            <a href="{{ route('sign_up_page') }}" class="text-red-500 ml-8 text-sm hover:underline">Sign Up</a>
         </div>
     </div>
 </body>
