@@ -24,8 +24,9 @@
     @endif
     <div class="container border mx-auto w-80 min-h-full bg-gray-700 p-5 mt-28 rounded-lg">
         <h1 class="text-3xl text-white mb-10">Log In</h1>
-        <form action="" method="POST">
+        <form action="{{ route('action-login') }}" method="POST">
             @csrf
+            @method('POST')
 
             <input type="text" name="username" class="border border-red-500 rounded-full bg-gray-800 text-white w-full mb-3 p-2"
                 placeholder=" Username">
