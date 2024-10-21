@@ -1,4 +1,4 @@
-<nav class="bg-gray-600">
+<nav class="bg-gray-600 border">
     <div class="flex">
         <img src="{{ asset('logo.png') }}" alt="" class="w-16 h-16 content-center">
         <h1 class="md:text-3xl text-xl text-white font-bold content-center">Stockify</h1>

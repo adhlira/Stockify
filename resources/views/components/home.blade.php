@@ -32,6 +32,16 @@
 
     <div class="container min-w-full">
         <x-navbar></x-navbar>
+        <main>
+            <div class="flex min-h-screen">
+                <div class="w-56 py-5 bg-gray-600">
+                    <x-sidebar></x-sidebar>
+                </div>
+                <div class="flex-1 border">
+                    {{ $slot }}
+                </div>
+            </div>
+        </main>
     </div>
 </body>
 

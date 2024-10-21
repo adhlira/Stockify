@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignUpController;
@@ -16,3 +17,5 @@ Route::post('action_login', [LoginController::class, 'Login'])->name('action-log
 Route::get('home', [HomeController::class, 'HomePage'])->name('home')->middleware('auth');
 
 Route::get('logout', [LoginController::class, 'Logout'])->name('logout');
+
+Route::get('dashboard', [DashboardController::class, 'DashboardPage'])->name('dashboard');

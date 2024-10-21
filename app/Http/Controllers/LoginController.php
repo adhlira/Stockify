@@ -21,7 +21,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($validateData)) {
             $request->session()->regenerate();
-            return redirect()->intended('/home')->with('success', 'Login Successfull');
+            return redirect()->intended('/dashboard')->with('success', 'Login Successfull');
         }
 
         return back()->withErrors([
