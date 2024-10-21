@@ -15,7 +15,7 @@
             dropdownMenu.classList.toggle('hidden');
         }
     </script>
-    <title>Home</title>
+    <title>Stockify</title>
 </head>
 
 <body>

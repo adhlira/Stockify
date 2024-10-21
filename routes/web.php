@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -19,3 +20,9 @@ Route::get('home', [HomeController::class, 'HomePage'])->name('home')->middlewar
 Route::get('logout', [LoginController::class, 'Logout'])->name('logout');
 
 Route::get('dashboard', [DashboardController::class, 'DashboardPage'])->name('dashboard');
+
+Route::get('categories', [CategoryController::class, 'CategoriesPage'])->name('categories');
+
+Route::get('add-category', [CategoryController::class, 'AddCategoryPage'])->name('add-category');
+
+Route::post('action-add-category', [CategoryController::class, 'Add'])->name('action-add-category');
