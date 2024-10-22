@@ -24,9 +24,11 @@
                         <td class="border p-2">{{ $category->name }}</td>
                         <td class=" border p-2">
                             <div class="flex justify-center gap-3">
-                                <button class="border p-2 rounded-md bg-yellow-500">
-                                    <i class="fa fa-floppy-disk"></i>
-                                </button>
+                                <a href="{{ route('edit-category', $category->id) }}">
+                                    <button class="border p-2 rounded-md bg-yellow-500">
+                                        <i class="fa fa-pen-to-square"></i>
+                                    </button>
+                                </a>
                                 <form action="{{ route('action-delete-category', $category->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')

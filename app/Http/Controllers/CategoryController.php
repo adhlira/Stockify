@@ -19,6 +19,12 @@ class CategoryController extends Controller
         return view('components.add_category');
     }
 
+    public function EditCategoryPage($id)
+    {
+        $category = Category::find($id);
+        return view('components.edit_category', ['category' => $category]);
+    }
+
     public function Add(Request $request)
     {
         $name = Str::lower($request->input('category_name'));
@@ -34,6 +40,23 @@ class CategoryController extends Controller
         ]);
 
         return redirect('/categories')->with('success', 'Successfully Added Data');
+    }
+
+    public function Edit(Request $request, $id)
+    {
+        $category = Category::find($id);
+        $name = Str::lower($request->input('category_name'));
+        $category_exist = Category::whereRaw('LOWER(name) = ?', [$name])->exists();
+        $request->validate([
+            'category_name' => 'required|string'
+        ]);
+        if ($category_exist) {
+            return back()->withErrors(['category_name' => 'The category name has already been taken.']);
+        }
+        $category->name = $request->input('category_name');
+        $category->save();
+
+        return redirect()->route('categories')->with('success', 'Data has been successfully edited');
     }
 
     public function DeleteCategory($id)

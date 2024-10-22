@@ -11,10 +11,6 @@ Route::get('', [LoginController::class, 'LoginPage'])->name('login_page');
 
 Route::get('sign_up', [SignUpController::class, 'SignUpPage'])->name('sign_up_page');
 
-Route::post('action-sign_up', [SignUpController::class, 'AddUser'])->name('action-sign_up');
-
-Route::post('action_login', [LoginController::class, 'Login'])->name('action-login');
-
 Route::get('home', [HomeController::class, 'HomePage'])->name('home')->middleware('auth');
 
 Route::get('logout', [LoginController::class, 'Logout'])->name('logout');
@@ -25,6 +21,14 @@ Route::get('categories', [CategoryController::class, 'CategoriesPage'])->name('c
 
 Route::get('add-category', [CategoryController::class, 'AddCategoryPage'])->name('add-category');
 
+Route::get('edit-category/{id}', [CategoryController::class, 'EditCategoryPage'])->name('edit-category');
+
+Route::post('action-sign_up', [SignUpController::class, 'AddUser'])->name('action-sign_up');
+
+Route::post('action_login', [LoginController::class, 'Login'])->name('action-login');
+
 Route::post('action-add-category', [CategoryController::class, 'Add'])->name('action-add-category');
+
+Route::put('action-edit-category/{id}', [CategoryController::class, 'Edit'])->name('action-edit-category');
 
 Route::delete('action-delete-category/{id}', [CategoryController::class, 'DeleteCategory'])->name('action-delete-category');
