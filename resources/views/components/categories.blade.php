@@ -23,12 +23,19 @@
                         <td class="border p-2">{{ $no++ }}</td>
                         <td class="border p-2">{{ $category->name }}</td>
                         <td class=" border p-2">
-                            <button class="border p-2 rounded-md bg-yellow-500">
-                                <i class="fa fa-floppy-disk"></i>
-                            </button>
-                            <button class="border p-2 rounded-md bg-red-500">
-                                <i class="fa fa-trash"></i>
-                            </button>
+                            <div class="flex justify-center gap-3">
+                                <button class="border p-2 rounded-md bg-yellow-500">
+                                    <i class="fa fa-floppy-disk"></i>
+                                </button>
+                                <form action="{{ route('action-delete-category', $category->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="border p-2 rounded-md bg-red-500"
+                                        onclick="return confirm('Delete this data ?')">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

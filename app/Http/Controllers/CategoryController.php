@@ -30,4 +30,12 @@ class CategoryController extends Controller
 
         return redirect('/categories')->with('success', 'Successfully Added Data');
     }
+
+    public function DeleteCategory($id)
+    {
+        $category = Category::find($id);
+        $category->delete();
+
+        return redirect()->route('categories')->with('success', 'Data has been deleted');
+    }
 }

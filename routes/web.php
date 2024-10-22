@@ -26,3 +26,5 @@ Route::get('categories', [CategoryController::class, 'CategoriesPage'])->name('c
 Route::get('add-category', [CategoryController::class, 'AddCategoryPage'])->name('add-category');
 
 Route::post('action-add-category', [CategoryController::class, 'Add'])->name('action-add-category');
+
+Route::delete('action-delete-category/{id}', [CategoryController::class, 'DeleteCategory'])->name('action-delete-category');
