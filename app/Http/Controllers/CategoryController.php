@@ -19,9 +19,9 @@ class CategoryController extends Controller
         return view('components.add_category');
     }
 
-    public function EditCategoryPage($id)
+    public function EditCategoryPage($slug)
     {
-        $category = Category::find($id);
+        $category = Category::where('slug',$slug)->first();
         return view('components.edit_category', ['category' => $category]);
     }
 

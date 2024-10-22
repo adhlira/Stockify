@@ -24,7 +24,7 @@
                         <td class="border p-2">{{ $category->name }}</td>
                         <td class=" border p-2">
                             <div class="flex justify-center gap-3">
-                                <a href="{{ route('edit-category', $category->id) }}">
+                                <a href="{{ route('edit-category', $category->slug) }}">
                                     <button class="border p-2 rounded-md bg-yellow-500">
                                         <i class="fa fa-pen-to-square"></i>
                                     </button>

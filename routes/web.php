@@ -21,7 +21,7 @@ Route::get('categories', [CategoryController::class, 'CategoriesPage'])->name('c
 
 Route::get('add-category', [CategoryController::class, 'AddCategoryPage'])->name('add-category');
 
-Route::get('edit-category/{id}', [CategoryController::class, 'EditCategoryPage'])->name('edit-category');
+Route::get('edit-category/{slug}', [CategoryController::class, 'EditCategoryPage'])->name('edit-category');
 
 Route::post('action-sign_up', [SignUpController::class, 'AddUser'])->name('action-sign_up');
 
