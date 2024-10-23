@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SignUpController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,12 @@ Route::get('categories', [CategoryController::class, 'CategoriesPage'])->name('c
 Route::get('add-category', [CategoryController::class, 'AddCategoryPage'])->name('add-category');
 
 Route::get('edit-category/{slug}', [CategoryController::class, 'EditCategoryPage'])->name('edit-category');
+
+Route::get('products', [ProductController::class, 'ProductPage'])->name('product_page');
+
+Route::get('add-product', [ProductController::class, 'AddProductPage'])->name('add_product_page');
+
+Route::post('action-add-product', [ProductController::class, 'AddProduct'])->name('action_add_product');
 
 Route::post('action-sign_up', [SignUpController::class, 'AddUser'])->name('action-sign_up');
 
