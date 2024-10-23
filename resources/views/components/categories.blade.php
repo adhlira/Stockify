@@ -16,7 +16,7 @@
             </thead>
             <tbody>
                 @php
-                    $no = 1;
+                    $no = ($categories->currentPage() - 1) * $categories->perPage() + 1;
                 @endphp
                 @foreach ($categories as $category)
                     <tr class="text-center">
@@ -43,5 +43,9 @@
                 @endforeach
             </tbody>
         </table>
+        <br>
+        <div class="">
+            {{ $categories->links() }}
+        </div>
     </div>
 </x-home>

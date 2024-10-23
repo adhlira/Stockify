@@ -28,10 +28,18 @@
             @csrf
             @method('POST')
 
-            <input type="text" name="username" class="border border-red-500 rounded-full bg-gray-800 text-white w-full mb-3 p-2"
+            <input type="text" name="username"
+                class="border border-red-500 rounded-full bg-gray-800 text-white w-full mb-3 p-2"
                 placeholder=" Username">
-            <input type="password" name="password" class="border border-red-500 rounded-full bg-gray-800 text-white w-full mb-10 p-2"
+            @error('username')
+                <div style="color: red;" class="text-center -mt-2">{{ $message }}</div>
+            @enderror
+            <input type="password" name="password"
+                class="border border-red-500 rounded-full bg-gray-800 text-white w-full mb-10 p-2"
                 placeholder=" Password">
+            @error('password')
+                <div style="color: red;" class="text-center -mt-10">{{ $message }}</div>
+            @enderror
             <button type="submit" class="border p-2 w-full rounded-full text-white bg-red-500">Log In</button>
         </form>
         <div class="flex mt-16 justify-center">

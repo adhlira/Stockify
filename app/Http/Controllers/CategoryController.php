@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function CategoriesPage()
     {
-        $categories = Category::all();
+        $categories = Category::simplePaginate(5);
         return view('components.categories', ['categories' => $categories]);
     }
 
