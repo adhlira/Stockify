@@ -28,7 +28,7 @@
                         <td class="border p-2">{{ $product->stock }}</td>
                         <td class=" border p-2">
                             <div class="flex justify-center gap-3">
-                                <a href="">
+                                <a href="{{ route('edit_product_page', $product->slug) }}">
                                     <button class="border p-2 rounded-md bg-yellow-500">
                                         <i class="fa fa-pen-to-square"></i>
                                     </button>

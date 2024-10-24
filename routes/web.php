@@ -28,6 +28,8 @@ Route::get('products', [ProductController::class, 'ProductPage'])->name('product
 
 Route::get('add-product', [ProductController::class, 'AddProductPage'])->name('add_product_page');
 
+Route::get('edit-product/{slug}', [ProductController::class, 'EditProductPage'])->name('edit_product_page');
+
 Route::post('action-add-product', [ProductController::class, 'AddProduct'])->name('action_add_product');
 
 Route::post('action-sign_up', [SignUpController::class, 'AddUser'])->name('action-sign_up');
@@ -37,5 +39,7 @@ Route::post('action_login', [LoginController::class, 'Login'])->name('action-log
 Route::post('action-add-category', [CategoryController::class, 'Add'])->name('action-add-category');
 
 Route::put('action-edit-category/{id}', [CategoryController::class, 'Edit'])->name('action-edit-category');
+
+Route::put('action-edit/{id}', [ProductController::class, 'EditProduct'])->name('action-edit-product');
 
 Route::delete('action-delete-category/{id}', [CategoryController::class, 'DeleteCategory'])->name('action-delete-category');

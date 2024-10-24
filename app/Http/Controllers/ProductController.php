@@ -20,6 +20,30 @@ class ProductController extends Controller
         return view('components.add_product', compact('categories'));
     }
 
+    public function EditProductPage($slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+        $categories = Category::all();
+        return view('components.edit_product', compact('categories', 'product'));
+    }
+
+    public function EditProduct(Request $request, $id)
+    {
+        $product = Product::find($id);
+        $request->validate([
+            'product_name' => 'required',
+            'category_id' => 'required',
+            'stock' => 'required'
+        ]);
+
+        $product->name = $request->input('product_name');
+        $product->category_id = $request->input('category_id');
+        $product->stock = $request->input('stock');
+        $product->save();
+
+        return redirect()->route('product_page')->with('success', 'Data has been successfully edited');
+    }
+
     public function AddProduct(Request $request)
     {
         $validateData = $request->validate([

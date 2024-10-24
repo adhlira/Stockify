@@ -1,20 +1,20 @@
 <x-home>
     <div class="flex mt-5">
-        <h2 class="font-serif font-semibold text-2xl ml-3">Add Product</h2>
+        <h2 class="font-serif font-semibold text-2xl ml-3">Edit Product</h2>
         <a href="{{ route('product_page') }}" class="ml-auto mr-3">
             <i class="fa fa-arrow-left border p-2 bg-green-500 rounded-md hover:bg-green-400"></i>
         </a>
     </div>
     <div>
-        <form action="{{ route('action_add_product') }}" method="POST" class="w-full mt-10 rounded-md p-5">
+        <form action="{{ route('action-edit-product', $product->id) }}" method="POST" class="w-full mt-10 rounded-md p-5">
             @csrf
-            @method('POST')
+            @method('PUT')
 
             <div class="form-group font-serif">
                 <label for="product_name">Product Name</label>
                 <br>
                 <input type="text" name="product_name" class="border p-2 rounded-md mt-2 w-1/2"
-                    value="{{ old('product_name') }}">
+                    value="{{ old('product_name', $product->name) }}">
                 @error('product_name')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
@@ -23,9 +23,8 @@
                 <label for="category_id">Category</label>
                 <br>
                 <select name="category_id" id="" class="border w-1/2 rounded-md p-2 text-center mt-2">
-                    <option value="" class="rounded-md p-2 text-center" disabled selected>- Choose Category -</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                     @endforeach
                 </select>
                 @error('category_id')
@@ -36,7 +35,7 @@
                 <label for="stock">Stock</label>
                 <br>
                 <input type="number" name="stock" class="border p-2 rounded-md mt-2 w-1/2"
-                    value="{{ old('stock') }}">
+                    value="{{ old('stock', $product->stock) }}">
                 @error('stock')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
