@@ -10,38 +10,64 @@
             @csrf
             @method('POST')
 
-            <div class="form-group font-serif">
-                <label for="product_name">Product Name</label>
-                <br>
-                <input type="text" name="product_name" class="border p-2 rounded-md mt-2 w-1/2"
-                    value="{{ old('product_name') }}">
-                @error('product_name')
-                    <div style="color: red;">{{ $message }}</div>
-                @enderror
+            <div class="flex gap-4">
+                <div class="flex-1">
+                    <div class="form-group font-serif">
+                        <label for="product_name">Product Name</label>
+                        <br>
+                        <input type="text" name="product_name" class="border p-2 rounded-md mt-2 w-full"
+                            value="{{ old('product_name') }}">
+                        @error('product_name')
+                            <div style="color: red;">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group font-serif mt-5">
+                        <label for="category_id">Category</label>
+                        <br>
+                        <select name="category_id" id="" class="border w-full rounded-md p-2 text-center mt-2">
+                            <option value="" class="rounded-md p-2 text-center" disabled selected>- Choose
+                                Category -</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                            <div style="color: red;">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group font-serif mt-5">
+                        <label for="purchase_price">Purchase price (Rp.)</label>
+                        <br>
+                        <input type="number" name="purchase_price" class="border p-2 rounded-md mt-2 w-full"
+                            value="{{ old('purchase_price') }}">
+                        @error('purchase_price')
+                            <div style="color: red;">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <div class="form-group font-serif">
+                        <label for="selling_price">Selling Price (Rp.)</label>
+                        <br>
+                        <input type="number" name="selling_price" class="border p-2 rounded-md mt-2 w-full"
+                            value="{{ old('selling_price') }}">
+                        @error('selling_price')
+                            <div style="color: red;">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group font-serif mt-5">
+                        <label for="stock">Stock</label>
+                        <br>
+                        <input type="number" name="stock" class="border p-2 rounded-md mt-2 w-full"
+                            value="{{ old('stock') }}">
+                        @error('stock')
+                            <div style="color: red;">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
             </div>
-            <div class="form-group font-serif mt-5">
-                <label for="category_id">Category</label>
-                <br>
-                <select name="category_id" id="" class="border w-1/2 rounded-md p-2 text-center mt-2">
-                    <option value="" class="rounded-md p-2 text-center" disabled selected>- Choose Category -</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
-                @error('category_id')
-                    <div style="color: red;">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="form-group font-serif mt-5">
-                <label for="stock">Stock</label>
-                <br>
-                <input type="number" name="stock" class="border p-2 rounded-md mt-2 w-1/2"
-                    value="{{ old('stock') }}">
-                @error('stock')
-                    <div style="color: red;">{{ $message }}</div>
-                @enderror
-            </div>
-            <button type="submit" class="border p-2 rounded-md bg-green-500 mt-5 w-1/2 font-serif font-semibold hover:bg-green-400">Save</button>
+            <button type="submit"
+                class="border p-2 rounded-md bg-green-500 mt-10 w-full font-serif font-semibold hover:bg-green-400">Save</button>
         </form>
     </div>
 </x-home>

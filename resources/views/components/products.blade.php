@@ -11,7 +11,8 @@
                 <tr>
                     <th class="border p-2">No</th>
                     <th class="border">Name</th>
-                    <th class="border">Category</th>
+                    <th class="border">Purchase Price</th>
+                    <th class="border">Selling Price</th>
                     <th class="border">Stock</th>
                     <th class="border">Action</th>
                 </tr>
@@ -24,7 +25,8 @@
                     <tr class="text-center">
                         <td class="border p-2">{{ $no++ }}</td>
                         <td class="border p-2">{{ $product->name }}</td>
-                        <td class="border p-2">{{ $product->category->name }}</td>
+                        <td class="border p-2">Rp. {{ number_format($product->purchase_price, 0)  }}</td>
+                        <td class="border p-2">Rp. {{ number_format($product->selling_price, 0) }}</td>
                         <td class="border p-2">{{ $product->stock }}</td>
                         <td class=" border p-2">
                             <div class="flex justify-center gap-3">

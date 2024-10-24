@@ -17,6 +17,8 @@ return new class extends Migration
                 table:'categories', indexName:'products_category_id'
             );
             $table->string('name');
+            $table->float('purchase_price');
+            $table->float('selling_price');
             $table->integer('stock');
             $table->string('slug');
             $table->timestamps();

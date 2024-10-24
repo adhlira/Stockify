@@ -41,11 +41,15 @@ class ProductController extends Controller
         $request->validate([
             'product_name' => 'required',
             'category_id' => 'required',
+            'purchase_price' => 'required',
+            'selling_price' => 'required',
             'stock' => 'required'
         ]);
 
         $product->name = $request->input('product_name');
         $product->category_id = $request->input('category_id');
+        $product->purchase_price = $request->input('purchase_price');
+        $product->selling_price = $request->input('selling_price');
         $product->stock = $request->input('stock');
         $product->save();
 
@@ -57,12 +61,16 @@ class ProductController extends Controller
         $validateData = $request->validate([
             'category_id' => 'required',
             'product_name' => 'required',
+            'purchase_price' => 'required',
+            'selling_price' => 'required',
             'stock' => 'required'
         ]);
 
         $product = new Product();
         $product->category_id = $validateData['category_id'];
         $product->name = $validateData['product_name'];
+        $product->purchase_price = $validateData['purchase_price'];
+        $product->selling_price = $validateData['selling_price'];
         $product->stock = $validateData['stock'];
         $product->save();
 
