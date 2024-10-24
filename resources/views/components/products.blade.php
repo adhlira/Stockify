@@ -33,7 +33,7 @@
                                         <i class="fa fa-pen-to-square"></i>
                                     </button>
                                 </a>
-                                <form action="" method="POST">
+                                <form action="{{ route('action-delete-product', $product->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="border p-2 rounded-md bg-red-500"

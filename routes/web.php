@@ -43,3 +43,5 @@ Route::put('action-edit-category/{id}', [CategoryController::class, 'Edit'])->na
 Route::put('action-edit/{id}', [ProductController::class, 'EditProduct'])->name('action-edit-product');
 
 Route::delete('action-delete-category/{id}', [CategoryController::class, 'DeleteCategory'])->name('action-delete-category');
+
+Route::delete('action-delete-product/{id}', [ProductController::class, 'DeleteProduct'])->name('action-delete-product');

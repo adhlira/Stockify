@@ -27,6 +27,14 @@ class ProductController extends Controller
         return view('components.edit_product', compact('categories', 'product'));
     }
 
+    public function DeleteProduct($id)
+    {
+        $product = Product::find($id);
+        $product->delete();
+
+        return redirect()->route('product_page')->with('success', 'Data successfully deleted');
+    }
+
     public function EditProduct(Request $request, $id)
     {
         $product = Product::find($id);
