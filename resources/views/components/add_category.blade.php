@@ -2,11 +2,11 @@
     <div class="flex mt-5">
         <h2 class="font-serif font-semibold text-2xl ml-3">Add Category</h2>
         <a href="{{ route('categories') }}" class="ml-auto mr-3">
-            <i class="fa fa-arrow-left border p-2 bg-green-500 rounded-md"></i>
+            <i class="fa fa-arrow-left border p-2 bg-green-500 rounded-md hover:bg-green-400"></i>
         </a>
     </div>
     <div>
-        <form action="{{ route('action-add-category') }}" method="POST" class="w-1/3 ml-3 mt-10 border rounded-md p-5">
+        <form action="{{ route('action-add-category') }}" method="POST" class="w-1/2 ml-3 mt-10 rounded-md p-5">
             @csrf
             @method('POST')
 
@@ -18,7 +18,7 @@
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
             </div>
-            <button type="submit" class="border p-2 rounded-md bg-green-500 mt-5 w-full">Save</button>
+            <button type="submit" class="border p-2 rounded-md bg-green-500 mt-5 w-full hover:bg-green-400 font-serif font-semibold">Save</button>
         </form>
     </div>
 </x-home>

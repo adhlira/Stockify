@@ -29,14 +29,14 @@
                         <td class=" border p-2">
                             <div class="flex justify-center gap-3">
                                 <a href="{{ route('edit_product_page', $product->slug) }}">
-                                    <button class="border p-2 rounded-md bg-yellow-500">
+                                    <button class="border p-2 rounded-md bg-yellow-500 hover:bg-yellow-400">
                                         <i class="fa fa-pen-to-square"></i>
                                     </button>
                                 </a>
                                 <form action="{{ route('action-delete-product', $product->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="border p-2 rounded-md bg-red-500"
+                                    <button class="border p-2 rounded-md bg-red-500 hover:bg-red-400"
                                         onclick="return confirm('Delete this data ?')">
                                         <i class="fa fa-trash"></i>
                                     </button>
