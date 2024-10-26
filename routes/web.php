@@ -32,6 +32,8 @@ Route::get('edit-product/{slug}', [ProductController::class, 'EditProductPage'])
 
 Route::get('search-product', [ProductController::class, 'SearchProduct'])->name('search_product');
 
+Route::get('sort-product', [ProductController::class, 'SortbyCategory'])->name('sort-product');
+
 Route::post('action-add-product', [ProductController::class, 'AddProduct'])->name('action_add_product');
 
 Route::post('action-sign_up', [SignUpController::class, 'AddUser'])->name('action-sign_up');

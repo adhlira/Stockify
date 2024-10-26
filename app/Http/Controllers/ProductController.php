@@ -86,4 +86,13 @@ class ProductController extends Controller
         $categories = Category::all();
         return view('components.products', compact('products','categories'));
     }
+
+    public function SortbyCategory(Request $request)
+    {
+        $product_category = $request->input('category_id');
+        $products = Product::where('category_id', $product_category)->simplePaginate(5);
+        $categories = Category::all();
+        $category = Category::where('id', $product_category)->first();
+        return view('components.product.sort_by_category', compact('products', 'categories', 'category'));
+    }
 }
