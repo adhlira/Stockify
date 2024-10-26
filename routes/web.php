@@ -34,6 +34,10 @@ Route::get('search-product', [ProductController::class, 'SearchProduct'])->name(
 
 Route::get('sort-product', [ProductController::class, 'SortbyCategory'])->name('sort-product');
 
+Route::get('/404', function(){
+    return view('404');
+});
+
 Route::post('action-add-product', [ProductController::class, 'AddProduct'])->name('action_add_product');
 
 Route::post('action-sign_up', [SignUpController::class, 'AddUser'])->name('action-sign_up');

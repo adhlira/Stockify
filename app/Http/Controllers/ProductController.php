@@ -12,20 +12,20 @@ class ProductController extends Controller
     {
         $products = Product::simplePaginate(5);
         $categories = Category::all();
-        return view('components.products', compact('products', 'categories'));
+        return view('components.product.products', compact('products', 'categories'));
     }
 
     public function AddProductPage()
     {
         $categories = Category::all();
-        return view('components.add_product', compact('categories'));
+        return view('components.product.add_product', compact('categories'));
     }
 
     public function EditProductPage($slug)
     {
         $product = Product::where('slug', $slug)->first();
         $categories = Category::all();
-        return view('components.edit_product', compact('categories', 'product'));
+        return view('components.product.edit_product', compact('categories', 'product'));
     }
 
     public function DeleteProduct($id)
@@ -81,16 +81,24 @@ class ProductController extends Controller
 
     public function SearchProduct(Request $request)
     {
-        $product_name = $request->input('product_name');
-        $products = Product::where('name', 'like', '%' . $product_name . '%')->simplePaginate(5);
+        $query = $request->input('product_name');
+        $products = Product::where('name', 'like', '%' . $query . '%')->simplePaginate(5);
+        if ($products->isEmpty())
+        {
+            return view('404');
+        }
         $categories = Category::all();
-        return view('components.products', compact('products','categories'));
+        return view('components.product.result_search', compact('products','categories', 'query'));
     }
 
     public function SortbyCategory(Request $request)
     {
         $product_category = $request->input('category_id');
         $products = Product::where('category_id', $product_category)->simplePaginate(5);
+        if ($products->isEmpty())
+        {
+            return view('404');
+        }
         $categories = Category::all();
         $category = Category::where('id', $product_category)->first();
         return view('components.product.sort_by_category', compact('products', 'categories', 'category'));

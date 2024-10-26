@@ -1,11 +1,35 @@
 <x-home>
     <div class="flex mt-3 justify-between">
-        <h2 class="ml-2 font-bold font-serif content-center text-2xl">Data Products In Category {{ $category->name }}
-        </h2>
-        <a href="{{ route('product_page') }}">
-            <button class="border p-2 rounded-md mr-2 bg-green-500 hover:bg-green-400">
-                <i class="fa fa-arrow-left"></i>
-            </button>
+        <h2 class="ml-2 font-bold font-serif content-center text-2xl">Data Products</h2>
+        <form action="{{ route('search_product') }}" class="" method="GET">
+            @csrf
+            @method('GET')
+            <div class="flex gap-2">
+                <input type="text" name="product_name" class="border p-2 w-80 rounded-md"
+                    placeholder="Search by product name">
+                <button type="submit" class="border p-2 rounded-md bg-green-500 hover:bg-green-400">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </form>
+        <form action="{{ route('sort-product') }}" method="GET">
+            @csrf
+            @method('GET')
+            <div class="flex gap-2">
+                <select name="category_id" id="" class="border rounded-md p-2">
+                    <option value="" class="font-serif" disabled selected>- Choose Category -</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" {{ request()->input('category_id') ? 'selected' : '' }} class="font-serif">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                <button class="border p-2 rounded-md bg-green-500 hover:bg-green-400 font-serif" type="submit">
+                    <i class="fa fa-sort"></i>
+                </button>
+            </div>
+        </form>
+        <a href="{{ route('add_product_page') }}"
+            class="border mr-2 rounded-md content-center p-2 bg-green-500 hover:bg-green-400">
+            <i class="fa fa-plus"></i>
         </a>
     </div>
     <div class="w-full overflow-x-auto p-2 mt-8">
@@ -54,11 +78,7 @@
         </table>
         <br>
         <div class="mt-5">
-            {{ $products->appends([
-                    'category_id' => request()->input('category_id'),
-                    '_token' => request()->input('_token'),
-                    '_method' => request()->input('_method'),
-                ])->links() }}
+            {{ $products->links() }}
         </div>
     </div>
 </x-home>
