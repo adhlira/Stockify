@@ -11,7 +11,8 @@ class ProductController extends Controller
     public function ProductPage()
     {
         $products = Product::simplePaginate(5);
-        return view('components.products', ['products' => $products]);
+        $categories = Category::all();
+        return view('components.products', compact('products', 'categories'));
     }
 
     public function AddProductPage()
@@ -74,7 +75,15 @@ class ProductController extends Controller
         $product->stock = $validateData['stock'];
         $product->save();
 
-        return redirect('products')->with('success', 'Added Data Successfully');
+        return redirect('products')->with('success', 'Successfully Added Data');
 
+    }
+
+    public function SearchProduct(Request $request)
+    {
+        $product_name = $request->input('product_name');
+        $products = Product::where('name', 'like', '%' . $product_name . '%')->simplePaginate(5);
+        $categories = Category::all();
+        return view('components.products', compact('products','categories'));
     }
 }
