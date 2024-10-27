@@ -41,6 +41,8 @@ Route::get('/404', function(){
 
 Route::get('transactions', [TransactionController::class, 'TransactionPage'])->name('transactions');
 
+Route::get('add-transaction', [TransactionController::class, 'AddTransactionPage'])->name('add_transaction');
+
 Route::post('action-add-product', [ProductController::class, 'AddProduct'])->name('action_add_product');
 
 Route::post('action-sign_up', [SignUpController::class, 'AddUser'])->name('action-sign_up');

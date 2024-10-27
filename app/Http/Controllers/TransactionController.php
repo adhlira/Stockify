@@ -10,4 +10,9 @@ class TransactionController extends Controller
     {
         return view('components.transaction.transactions');
     }
+
+    public function AddTransactionPage()
+    {
+        return view('components.transaction.add_transaction');
+    }
 }
