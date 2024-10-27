@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SignUpController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('', [LoginController::class, 'LoginPage'])->name('login_page');
@@ -37,6 +38,8 @@ Route::get('sort-product', [ProductController::class, 'SortbyCategory'])->name('
 Route::get('/404', function(){
     return view('404');
 });
+
+Route::get('transactions', [TransactionController::class, 'TransactionPage'])->name('transactions');
 
 Route::post('action-add-product', [ProductController::class, 'AddProduct'])->name('action_add_product');
 

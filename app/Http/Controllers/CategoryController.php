@@ -11,18 +11,18 @@ class CategoryController extends Controller
     public function CategoriesPage()
     {
         $categories = Category::simplePaginate(5);
-        return view('components.categories', ['categories' => $categories]);
+        return view('components.category.categories', ['categories' => $categories]);
     }
 
     public function AddCategoryPage()
     {
-        return view('components.add_category');
+        return view('components.category.add_category');
     }
 
     public function EditCategoryPage($slug)
     {
         $category = Category::where('slug',$slug)->first();
-        return view('components.edit_category', ['category' => $category]);
+        return view('components.category.edit_category', ['category' => $category]);
     }
 
     public function Add(Request $request)
