@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -13,6 +14,7 @@ class TransactionController extends Controller
 
     public function AddTransactionPage()
     {
-        return view('components.transaction.add_transaction');
+        $products = Product::all();
+        return view('components.transaction.add_transaction', compact('products'));
     }
 }

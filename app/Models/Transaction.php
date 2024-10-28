@@ -8,10 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Transaction extends Model
 {
-    public function products(): HasMany
-    {
-        return $this->hasMany(Product::class);
-    }
-
-    
+    protected $fillable = [
+        'transaction_date',
+        'total_amount',
+    ];
 }
